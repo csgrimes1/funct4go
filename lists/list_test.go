@@ -3,7 +3,6 @@ package lists_test
 import (
 	"testing"
 	"github.com/stretchr/testify/assert"
-	"fmt"
 	"github.com/csgrimes1/funct4go/lists"
 )
 
@@ -83,6 +82,12 @@ func TestFolds(t *testing.T) {
 			}
 			return accumulation
 		})
-	fmt.Printf("Folded to: %v\n", result)
 	assert.Equal(t, length - 100, result)
+}
+
+func TestList2String(t *testing.T) {
+	s := generateList().
+		Take(10).
+		String()
+	assert.Equal(t, "[0,1,2,3,4,5,6,7,8,9]", s)
 }

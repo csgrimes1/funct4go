@@ -8,6 +8,10 @@ type Yield struct {
 	permuteResults lists.List
 }
 
+func (y Yield) RawResults() lists.List {
+	return y.permuteResults
+}
+
 func Permute(ls ...lists.List) Yield {
 	if len(ls) <= 0 {
 		return Yield{ permuteResults: lists.CreateOptionalEmpty().List }

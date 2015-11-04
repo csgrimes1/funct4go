@@ -3,6 +3,7 @@ package lists
 import (
 	"reflect"
 	//"github.com/csgrimes1/funct4go/alg"
+	"fmt"
 )
 
 
@@ -123,6 +124,14 @@ func (list List) TakeWhileT( predicate interface{} ) List {
 	return list.TakeWhile(foo)
 }
 
+/*func (list List) Skip(number int) List {
+	ok, next = list.Next()
+	if !ok {
+		return EmptyList()
+	}
+
+}*/
+
 func (list List) Fold(initialValue interface{}, accumulator func(value interface{}, accumulation interface{}) interface{}) interface{} {
 	var node List
 	accum := initialValue
@@ -146,4 +155,18 @@ func (list List) FlatMap() List {
 	return List {
 		InnerCollection: newChildNodes(list.InnerCollection),
 	}
+}
+
+func toString(v interface{}) string {
+	return fmt.Sprintf("%v", v)
+}
+
+func (list List) String() string {
+	return list.Fold("[", func (value interface{}, accumulation interface{}) interface{} {
+		sAccum := accumulation.(string)
+		if len(sAccum) <= 1 {
+			return sAccum + toString(value)
+		}
+		return sAccum + "," + toString(value)
+	}).(string) + "]"
 }
