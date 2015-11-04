@@ -91,3 +91,11 @@ func TestList2String(t *testing.T) {
 		String()
 	assert.Equal(t, "[0,1,2,3,4,5,6,7,8,9]", s)
 }
+
+func TestSkips(t *testing.T) {
+	result := generateList().
+		Take(5).
+		Skip(2)
+	_, val := result.Value()
+	assert.Equal(t, 2, val)
+}

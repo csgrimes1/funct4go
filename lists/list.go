@@ -124,13 +124,19 @@ func (list List) TakeWhileT( predicate interface{} ) List {
 	return list.TakeWhile(foo)
 }
 
-/*func (list List) Skip(number int) List {
-	ok, next = list.Next()
+func (list List) skip(index int, number int) List {
+	ok, next := list.Next()
 	if !ok {
-		return EmptyList()
+		return List{InnerCollection: emptyNode()}
+	} else if index >= number {
+		return list
 	}
+	return next.skip(index + 1, number)
+}
 
-}*/
+func (list List) Skip(number int) List {
+	return list.skip(0, number)
+}
 
 func (list List) Fold(initialValue interface{}, accumulator func(value interface{}, accumulation interface{}) interface{}) interface{} {
 	var node List

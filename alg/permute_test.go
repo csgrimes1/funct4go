@@ -18,8 +18,8 @@ func generateList() lists.List {
 
 func TestPermute1(t *testing.T) {
 	l1 := generateList().Take(2)
-	l2 := generateList().Take(3)
-	l3 := generateList().Take(4)
+	l2 := generateList().Skip(1).Take(3)
+	l3 := generateList().Skip(2).Take(4)
 	y := alg.Permute(
 		l1,
 		l2,
