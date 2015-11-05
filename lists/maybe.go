@@ -5,27 +5,22 @@ type Maybe struct {
 }
 
 func CreateOptionalResult(value interface{}) Maybe {
-	return Maybe{List: List {
-		InnerCollection: maybeNode{
-			hasValue: true,
-			result: value,
-		},
-	}}
+	return Maybe {
+		List: newList(newSliceNode([]interface{}{value})),
+	}
 }
 
 func CreateOptionalEmpty() Maybe {
-	return Maybe{List: List {
-		InnerCollection: emptyNode(),
-	},}
+	return Maybe {
+		List: newEmptyList(),
+	}
 }
 
 func CreateBooleanResult(result bool) Maybe {
-	return Maybe {List: List{
-		InnerCollection: maybeNode{
-			hasValue:	result,
-			result:		result,
-		},
-	},}
+	if result {
+		return CreateOptionalResult(result)
+	}
+	return CreateOptionalEmpty()
 }
 
 type maybeNode struct {

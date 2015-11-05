@@ -13,7 +13,7 @@ func firstChildNode(parentNode ListNode) ListNode {
 	if asList.Done() {
 		return emptyNode()
 	}
-	return asList.InnerCollection
+	return asList.node()
 }
 
 

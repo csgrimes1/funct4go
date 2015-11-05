@@ -18,7 +18,7 @@ func makeReflectedSliceFrom(source reflect.Value) []interface{} {
 	return buildSlice(beginSlice, source, 0, length)
 }
 
-func newSliceList(slice interface{}) ListNode {
+func newSliceNode(slice interface{}) ListNode {
 	return sliceList{
 		slice: makeReflectedSliceFrom(reflect.ValueOf(slice)),
 	}

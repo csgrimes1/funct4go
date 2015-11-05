@@ -99,3 +99,8 @@ func TestSkips(t *testing.T) {
 	_, val := result.Value()
 	assert.Equal(t, 2, val)
 }
+
+func TestEmptyList(t *testing.T) {
+	el := lists.NewList(nil)
+	assert.Equal(t, true, el.Done())
+}

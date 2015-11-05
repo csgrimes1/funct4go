@@ -59,12 +59,23 @@ func (y Yield) RawList() lists.List {
 	return y.permuteResults
 }
 
-func (y Yield) Fold(accumulator interface{}) interface{} {
+func (y Yield) Fold(accumulator interface{}) lists.Maybe {
 //	v := reflect.ValueOf(accumulator)
 //	foo := func(value interface{}, accumulation interface{}) interface{} {
 //		items := []reflect.Value {reflect.ValueOf(value), reflect.ValueOf(accumulation)}
 //		return v.Call(items)[0].Interface()
 //	}
 //	return list.Fold(initialValue, foo)
-	return 0
+	return lists.CreateOptionalEmpty()
 }
+
+//func (y Yield) Emit(mapper interface{}) lists.List {
+//	mapper2 := func(row interface{}) interface{} {
+//		rowValue := reflect.ValueOf(row)
+//		lambda := reflect.ValueOf(mapper)
+//		lambda.Call(rowValue).Interface()
+//	}
+//	return y.RawList().Map(mapper2)
+//}
+
+

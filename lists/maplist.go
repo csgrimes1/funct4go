@@ -3,23 +3,23 @@ package lists
 import (
 )
 
-func newMapList(target ListNode, mapper func(interface{}) interface{}) ListNode {
-	return mapList{ target: target, mapper: mapper }
+func newMapNode(target ListNode, mapper func(interface{}) interface{}) ListNode {
+	return mapNode{ target: target, mapper: mapper }
 }
 
-type mapList struct {
+type mapNode struct {
 	target ListNode
 	mapper func(interface{}) interface{}
 }
 
-func (node mapList) Done() bool {
+func (node mapNode) Done() bool {
 	return node.target.Done()
 }
 
-func (node mapList) Value() interface{} {
+func (node mapNode) Value() interface{} {
 	return node.mapper(node.target.Value())
 }
 
-func (node mapList) Tail() ListNode {
-	return newMapList( node.target.Tail(), node.mapper )
+func (node mapNode) Tail() ListNode {
+	return newMapNode( node.target.Tail(), node.mapper )
 }

@@ -29,3 +29,11 @@ func TestOptionalEmpty(t *testing.T) {
 	assert.Equal(t, 0, count)
 }
 
+func TestMaybeFlatmap(t *testing.T) {
+	lst := lists.NewList([]lists.Maybe{
+		lists.CreateBooleanResult(true),
+		lists.CreateBooleanResult(false),
+		lists.CreateBooleanResult(true),
+	}).FlatMap()
+	assert.Equal(t, 2, lst.Count())
+}

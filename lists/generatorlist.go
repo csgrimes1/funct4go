@@ -3,7 +3,7 @@ package lists
 import (
 )
 
-func newGeneratorList(initialValue interface{}, generator func(interface{}) interface{}) ListNode {
+func newGeneratorNode(initialValue interface{}, generator func(interface{}) interface{}) ListNode {
 	return generatorList{
 		value: generator(initialValue),
 		generator: generator,
@@ -24,5 +24,5 @@ func (node generatorList) Value() interface{} {
 }
 
 func (node generatorList) Tail() ListNode {
-	return newGeneratorList(node.value, node.generator)
+	return newGeneratorNode(node.value, node.generator)
 }

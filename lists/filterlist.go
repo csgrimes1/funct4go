@@ -14,7 +14,7 @@ func maybeAdvance(target ListNode, predicate func(interface{}) bool) (bool, List
 	return maybeAdvance(target.Tail(), predicate)
 }
 
-func newFilterList(target ListNode, predicate func(interface{}) bool) ListNode {
+func newFilterNode(target ListNode, predicate func(interface{}) bool) ListNode {
 	/*
 		When creating a new ListNode, advance past any nodes that don't
 		match the predicate.
@@ -40,5 +40,5 @@ func (node filterList) Value() interface{} {
 }
 
 func (node filterList) Tail() ListNode {
-	return newFilterList( node.target.Tail(), node.predicate)
+	return newFilterNode( node.target.Tail(), node.predicate)
 }
