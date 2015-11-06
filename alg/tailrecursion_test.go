@@ -4,12 +4,9 @@ import (
 	"github.com/csgrimes1/funct4go/alg"
 	"testing"
 	"github.com/stretchr/testify/assert"
-	"fmt"
 )
 
 func fibonacci(arg int, accum int) alg.RecurseResult {
-	fmt.Printf("%v  %v", arg, accum)
-
 	if accum > 21 {
 		return alg.Done(accum)
 	}
